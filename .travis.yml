@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - "11"
+install:
+  - npm install
+script:
+  - hexo g
+after_script:
+  - cd ./public
+  - git config user.name "deng565430"
+  - git config user.email "562340148@qq.com"
+  - git init
+  - git add -A
+  - git commit -m"init"
+  - git push --force "https://${TOKEN}@github.com/deng565430/ericBlog.git" master:gh-pages
+branches:
+  only:
+    - master
